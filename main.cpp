@@ -25,6 +25,8 @@ int main() {
     cout << script;
     cin >> input;
 
+    //TODO: 원하는 옵션을 통하여 단어/문장/긴글 연습 모듈 선언 및 실행
+    
     clock_t start, end;
     for(int i=0; i<5; i++) {
         cout << "진행도 [" << i << "/5]" << endl;
