@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include "Word.h"
 #include "utils.h"
 using namespace std;
 
@@ -12,42 +13,109 @@ const string short_sentence[5] = {
     "제발 잘 됐으면 좋겠습니다."
 };
 
-const string script = "안녕하세요. 한글 타자연습기 프로그램입니다."\
-"단어 연습, 짧은 문장 연습, 긴 글 연습이 가능합니다."\
-"1. 단어 연습"\
-"2. 짧은 문장 연습"\
-"3. 긴 글 연습"\
-"------------------------------------------------"\
+const string script_main = "안녕하세요. 한글 타자연습기 프로그램입니다.\n"\
+"단어 연습, 짧은 문장 연습, 긴 글 연습이 가능합니다.\n"\
+"1. 단어 수정\n"\
+"2. 단어 연습\n"\
+"3. 짧은 문장 연습\n"\
+"4. 긴 글 연습\n"\
+"------------------------------------------------\n"\
+"원하시는 옵션을 선택하세요.";
+
+const string script_word_modify = "단어 수정을 선택하셨습니다.\n"\
+"단어 보기, 단어 추가, 단어 삭제가 가능합니다.\n"\
+"1. 단어 보기\n"\
+"2. 단어 추가\n"\
+"3. 단어 삭제\n"\
+"------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
 int main() {
-    int input;
-    cout << script;
-    cin >> input;
+    Word w;
+    while(true) {
+        int input;
+        cout << script_main;
+        cin >> input;
+        cin.ignore();
+        cout << endl;
+
+        //TODO: 원하는 옵션을 통하여 단어 추가/삭제 모듈 선언 및 실행
+        switch (input)
+        {
+        case 1:
+        {
+            while(true) {
+                int flag = 1;
+
+                cout << script_word_modify;
+                int input2;
+                cin >> input2;
+                cin.ignore();
+                cout << endl;
+
+                switch (input2)
+                {
+                case 1:
+                    w.show_words();
+                    break;
+                case 2:
+                {
+                    cout << "추가할 단어를 입력해 주세요." << endl;
+                    string word;
+                    getline(cin, word);
+
+                    w.addWord(word);
+                    break;
+                }
+                case 3:
+                {
+                    cout << "삭제할 단어를 입력해 주세요." << endl;
+                    string word;
+                    getline(cin, word);
+
+                    w.deleteWord(word);
+                    break;
+                }
+                default:
+                    flag = 0;
+                    break;
+                }
+                if (flag == 0) {
+                    break;
+                }
+            }
+            break;
+        }
+        
+        default:
+            return 0;
+        }
+    }
+    
 
     //TODO: 원하는 옵션을 통하여 단어/문장/긴글 연습 모듈 선언 및 실행
-    
-    clock_t start, end;
-    for(int i=0; i<5; i++) {
-        cout << "진행도 [" << i << "/5]" << endl;
-        if(cin.fail()) { // 버퍼 비우기
-            cin.clear();
-        }
 
-        cout << short_sentence[i] << endl;
+    // clock_t start, end;
+    // for(int i=0; i<5; i++) {
+    //     cout << "진행도 [" << i << "/5]" << endl;
+    //     if(cin.fail()) { // 버퍼 비우기
+    //         cin.clear();
+    //     }
 
-        // 시간 측정
-        start = clock();
-        string input;
-        getline(cin, input);
-        end = clock();
+    //     cout << short_sentence[i] << endl;
 
-        double correct = checkCorrect(input, short_sentence[i]);
+    //     // 시간 측정
+    //     start = clock();
+    //     string input;
+    //     getline(cin, input);
+    //     end = clock();
 
-        cout << "소요시간 : " << (double)(end-start)/(double)1000 << "(초)" << endl;
-        cout << "정확도 : " << correct << "%" << endl;
-        cout << endl;
-    }
+    //     double correct = checkCorrect(input, short_sentence[i]);
+
+    //     cout << "소요시간 : " << (double)(end-start)/(double)1000 << "(초)" << endl;
+    //     cout << "정확도 : " << correct << "%" << endl;
+    //     cout << endl;
+    // }
 
     return 0;
 }
