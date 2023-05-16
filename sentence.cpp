@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
-#include "sentence.h"
+#include "Sentence.h"
 using namespace std;
 
 
@@ -18,7 +18,7 @@ Sentence::Sentence() {
     sentence_file.close();
 }
 
-// vector¾ÈÀÇ ¹®ÀåµéÀ» Ãâ·ÂÇÏ´Â ÇÔ¼ö.
+// vectorì•ˆì˜ ë¬¸ì¥ë“¤ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜.
 void Sentence::show_sentences() {
     cout << "index \t" << "sentence" << endl;
     for(int i=0 ;i<sentences.size(); i++) {
@@ -27,37 +27,37 @@ void Sentence::show_sentences() {
     cout << endl;
 }
 
-// ´Ü¾î¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö.
+// ë¬¸ì¥ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜.
 void Sentence::addSentence(string sentence) {
-    // Ãß°¡ÇÏ·Á´Â ´Ü¾î°¡ ÀÌ¹Ì Á¸ÀçÇÏ´ÂÁö È®ÀÎ.
+    // ì¶”ê°€í•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì´ë¯¸ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸.
     auto it = find(sentences.begin(), sentences.end(), sentence);
 
-    if(it == sentences.end()) { // Ãß°¡ÇÏ·Á´Â ´Ü¾î°¡ ¾ø´Â °æ¿ì.
+    if(it == sentences.end()) { // ì¶”ê°€í•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì—†ëŠ” ê²½ìš°.
         sentences.push_back(sentence);
-        cout << "¹®ÀåÀÌ ¼º°øÀûÀ¸·Î Ãß°¡µÇ¾ú½À´Ï´Ù!\n\n";
+        cout << "ë¬¸ì¥ì´ ì„±ê³µì ìœ¼ë¡œ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤!\n\n";
         saveSentence();
     } else {
-        cout << "ÀÌ¹Ì Á¸ÀçÇÏ´Â ¹®ÀåÀÔ´Ï´Ù!\n\n";
+        cout << "ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ë¬¸ì¥ì…ë‹ˆë‹¤!\n\n";
     }
 }
 
 
-// ´Ü¾î¸¦ »èÁ¦ÇÏ´Â ÇÔ¼ö.
+// ë¬¸ì¥ì„ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜.
 void Sentence::deleteSentence(string sentence) {
-    // »èÁ¦ÇÏ·Á´Â ´Ü¾î°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ.
+    // ì‚­ì œí•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸.
     auto it = find(sentences.begin(), sentences.end(), sentence);
 
     if(it == sentences.end()) {
-        cout << "ÇØ´ç ¹®ÀåÀº ÆÄÀÏ¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù!\n\n";
+        cout << "í•´ë‹¹ ë¬¸ì¥ì€ íŒŒì¼ì— ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!\n\n";
     } else {
-        int loc = it-sentences.begin(); // ÇØ´ç ´Ü¾î°¡ À§Ä¡ÇÏ´Â ÀÎµ¦½º ÀúÀå.
+        int loc = it-sentences.begin(); // í•´ë‹¹ ë¬¸ì¥ì´ ìœ„ì¹˜í•˜ëŠ” ì¸ë±ìŠ¤ ì €ì¥.
         sentences.erase(sentences.begin() + loc);
-        cout << "¼º°øÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù!\n\n";
+        cout << "ì„±ê³µì ìœ¼ë¡œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤!\n\n";
         saveSentence();
     }
 }
 
-// ´Ü¾î¸¦ ÀúÀåÇÏ´Â ÇÔ¼ö.
+// ë¬¸ì¥ì„ ì €ì¥í•˜ëŠ” í•¨ìˆ˜.
 void Sentence::saveSentence() {
     fstream sentence_file;
     sentence_file.open("./Default/sentence.txt", ios::out);
