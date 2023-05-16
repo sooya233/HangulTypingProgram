@@ -3,39 +3,39 @@
 #include <ctime>
 #include "Word.h"
 #include "Sentence.h"
-#include "utils.h"
+// #include "utils.h"
 using namespace std;
 
 const string short_sentence[5] = {
-    "¾È³çÇÏ¼¼¿ä. ½ÉÈ­ÇÁ·Î±×·¡¹Ö ÇÁ·ÎÁ§Æ®ÀÔ´Ï´Ù.",
-    "ÇØ´ç ¹®ÀåÀº Ã¼Å©¸¦ À§ÇÑ ¹®ÀåÀÔ´Ï´Ù.",
-    "¼Óµµ, Á¤È®µµ, ½Ã°£À» ÃøÁ¤ÇÕ´Ï´Ù.",
-    "ÇÁ·ÎÁ§Æ® ¼º°øÇÏ°í ½Í½À´Ï´Ù.",
-    "Á¦¹ß Àß µÆÀ¸¸é ÁÁ°Ú½À´Ï´Ù."
+    "ì•ˆë…•í•˜ì„¸ìš”. ì‹¬í™”í”„ë¡œê·¸ëž˜ë° í”„ë¡œì íŠ¸ìž…ë‹ˆë‹¤.",
+    "í•´ë‹¹ ë¬¸ìž¥ì€ ì²´í¬ë¥¼ ìœ„í•œ ë¬¸ìž¥ìž…ë‹ˆë‹¤.",
+    "ì†ë„, ì •í™•ë„, ì‹œê°„ì„ ì¸¡ì •í•©ë‹ˆë‹¤.",
+    "í”„ë¡œì íŠ¸ ì„±ê³µí•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.",
+    "ì œë°œ ìž˜ ëìœ¼ë©´ ì¢‹ê² ìŠµë‹ˆë‹¤."
 };
 
-const string script_main = "¾È³çÇÏ¼¼¿ä. ÇÑ±Û Å¸ÀÚ¿¬½À±â ÇÁ·Î±×·¥ÀÔ´Ï´Ù.\n"\
-"´Ü¾î ¿¬½À, ÂªÀº ¹®Àå ¿¬½À, ±ä ±Û ¿¬½ÀÀÌ °¡´ÉÇÕ´Ï´Ù.\n"\
-"1. ´Ü¾î ¼öÁ¤\n"\
-"2. ¹®Àå ¼öÁ¤\n"\
+const string script_main = "ì•ˆë…•í•˜ì„¸ìš”. í•œê¸€ íƒ€ìžì—°ìŠµê¸° í”„ë¡œê·¸ëž¨ìž…ë‹ˆë‹¤.\n"\
+"ë‹¨ì–´ ì—°ìŠµ, ì§§ì€ ë¬¸ìž¥ ì—°ìŠµ, ê¸´ ê¸€ ì—°ìŠµì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
+"1. ë‹¨ì–´ ìˆ˜ì •\n"\
+"2. ë¬¸ìž¥ ìˆ˜ì •\n"\
 "------------------------------------------------\n"\
-"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
+"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
 
-const string script_word_modify = "´Ü¾î ¼öÁ¤À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
-"´Ü¾î º¸±â, ´Ü¾î Ãß°¡, ´Ü¾î »èÁ¦°¡ °¡´ÉÇÕ´Ï´Ù.\n"\
-"1. ´Ü¾î º¸±â\n"\
-"2. ´Ü¾î Ãß°¡\n"\
-"3. ´Ü¾î »èÁ¦\n"\
+const string script_word_modify = "ë‹¨ì–´ ìˆ˜ì •ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
+"ë‹¨ì–´ ë³´ê¸°, ë‹¨ì–´ ì¶”ê°€, ë‹¨ì–´ ì‚­ì œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
+"1. ë‹¨ì–´ ë³´ê¸°\n"\
+"2. ë‹¨ì–´ ì¶”ê°€\n"\
+"3. ë‹¨ì–´ ì‚­ì œ\n"\
 "------------------------------------------------\n"\
-"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
+"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
 
-const string script_sentence_modify = "¹®Àå ¼öÁ¤À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
-"¹®Àå º¸±â, ¹®Àå Ãß°¡, ¹®Àå »èÁ¦°¡ °¡´ÉÇÕ´Ï´Ù.\n"\
-"1. ¹®Àå º¸±â\n"\
-"2. ¹®Àå Ãß°¡\n"\
-"3. ¹®Àå »èÁ¦\n"\
+const string script_sentence_modify = "ë¬¸ìž¥ ìˆ˜ì •ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
+"ë¬¸ìž¥ ë³´ê¸°, ë¬¸ìž¥ ì¶”ê°€, ë¬¸ìž¥ ì‚­ì œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
+"1. ë¬¸ìž¥ ë³´ê¸°\n"\
+"2. ë¬¸ìž¥ ì¶”ê°€\n"\
+"3. ë¬¸ìž¥ ì‚­ì œ\n"\
 "------------------------------------------------\n"\
-"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
+"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
 
 int main() {
     Word w;
@@ -51,7 +51,7 @@ int main() {
         switch (input)
         {
 
-        // ´Ü¾î Ãß°¡/»èÁ¦ ¸ðµâ ¼±¾ð ¹× ½ÇÇà
+        // ë‹¨ì–´ ì¶”ê°€/ì‚­ì œ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
         case 1:
         {
             while(true) {
@@ -70,7 +70,7 @@ int main() {
                     break;
                 case 2:
                 {
-                    cout << "Ãß°¡ÇÒ ´Ü¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
+                    cout << "ì¶”ê°€í•  ë‹¨ì–´ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
                     string word;
                     getline(cin, word);
 
@@ -79,7 +79,7 @@ int main() {
                 }
                 case 3:
                 {
-                    cout << "»èÁ¦ÇÒ ´Ü¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
+                    cout << "ì‚­ì œí•  ë‹¨ì–´ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
                     string word;
                     getline(cin, word);
 
@@ -97,7 +97,7 @@ int main() {
             break;
         }
         
-        // ¹®Àå Ãß°¡/»èÁ¦ ¸ðµâ ¼±¾ð ¹× ½ÇÇà
+        // ë¬¸ìž¥ ì¶”ê°€/ì‚­ì œ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
         case 2:
         {
             while(true) {
@@ -116,7 +116,7 @@ int main() {
                     break;
                 case 2:
                 {
-                    cout << "Ãß°¡ÇÒ ¹®ÀåÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
+                    cout << "ì¶”ê°€í•  ë¬¸ìž¥ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
                     string sentence;
                     getline(cin, sentence);
 
@@ -125,7 +125,7 @@ int main() {
                 }
                 case 3:
                 {
-                    cout << "»èÁ¦ÇÒ ¹®ÀåÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
+                    cout << "ì‚­ì œí•  ë¬¸ìž¥ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
                     string sentence;
                     getline(cin, sentence);
 
@@ -148,18 +148,18 @@ int main() {
     }
     
 
-    //TODO: ¿øÇÏ´Â ¿É¼ÇÀ» ÅëÇÏ¿© ´Ü¾î/¹®Àå/±ä±Û ¿¬½À ¸ðµâ ¼±¾ð ¹× ½ÇÇà
+    //TODO: ì›í•˜ëŠ” ì˜µì…˜ì„ í†µí•˜ì—¬ ë‹¨ì–´/ë¬¸ìž¥/ê¸´ê¸€ ì—°ìŠµ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
 
     // clock_t start, end;
     // for(int i=0; i<5; i++) {
-    //     cout << "ÁøÇàµµ [" << i << "/5]" << endl;
-    //     if(cin.fail()) { // ¹öÆÛ ºñ¿ì±â
+    //     cout << "ì§„í–‰ë„ [" << i << "/5]" << endl;
+    //     if(cin.fail()) { // ë²„í¼ ë¹„ìš°ê¸°
     //         cin.clear();
     //     }
 
     //     cout << short_sentence[i] << endl;
 
-    //     // ½Ã°£ ÃøÁ¤
+    //     // ì‹œê°„ ì¸¡ì •
     //     start = clock();
     //     string input;
     //     getline(cin, input);
@@ -167,8 +167,8 @@ int main() {
 
     //     double correct = checkCorrect(input, short_sentence[i]);
 
-    //     cout << "¼Ò¿ä½Ã°£ : " << (double)(end-start)/(double)1000 << "(ÃÊ)" << endl;
-    //     cout << "Á¤È®µµ : " << correct << "%" << endl;
+    //     cout << "ì†Œìš”ì‹œê°„ : " << (double)(end-start)/(double)1000 << "(ì´ˆ)" << endl;
+    //     cout << "ì •í™•ë„ : " << correct << "%" << endl;
     //     cout << endl;
     // }
 
