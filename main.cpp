@@ -4,6 +4,7 @@
 #include "Word.h"
 #include "Sentence.h"
 #include "Wordgame.h"
+#include "Sentencegame.h"
 // #include "utils.h"
 using namespace std;
 
@@ -20,6 +21,7 @@ const string script_main = "안녕하세요. 한글 타자연습기 프로그램
 "1. 단어 수정\n"\
 "2. 문장 수정\n"\
 "3. 단어 게임\n"\
+"4. 문장 게임\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
@@ -41,6 +43,10 @@ const string script_sentence_modify = "문장 수정을 선택하셨습니다.\n
 
 const string script_word_game = "단어 게임을 선택하셨습니다.\n"\
 "단어 게임이 시작됩니다.\n"\
+"------------------------------------------------\n";
+
+const string script_sentence_game = "문장 게임을 선택하셨습니다.\n"\
+"문장 게임이 시작됩니다.\n"\
 "------------------------------------------------\n";
 
 int main() {
@@ -165,6 +171,24 @@ int main() {
             }
 
             delete wg;
+        }
+
+        // 문장게임
+        case 4:
+        {   
+            cout << script_sentence_game;
+            int count = 10; // 기본 10개
+            SentenceGame *sg = new SentenceGame(count);
+
+            for(int i=0; i<count; i++) {
+                string sentence = sg->getSentence(i);
+                cout << sentence << endl;
+
+                string ans;
+                getline(cin, ans);
+            }
+
+            delete sg;
         }
 
         default:
