@@ -14,7 +14,7 @@ SentenceGame::SentenceGame(int count) {
     sentence_file.open("./Default/sentence.txt");
 
     
-    // word.txt·ÎºÎÅÍ ´Ü¾î¸¦ ºÒ·¯¿Í file_words¿¡ ÀúÀå.
+    // word.txtë¡œë¶€í„° ë‹¨ì–´ë¥¼ ë¶ˆëŸ¬ì™€ file_wordsì— ì €ì¥.
     string sentence;
     vector<string> file_sentences;
     while(getline(sentence_file, sentence)) {
