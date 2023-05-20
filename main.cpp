@@ -3,6 +3,7 @@
 #include <ctime>
 #include "Word.h"
 #include "Sentence.h"
+#include "Wordgame.h"
 // #include "utils.h"
 using namespace std;
 
@@ -18,6 +19,7 @@ const string script_main = "안녕하세요. 한글 타자연습기 프로그램
 "단어 연습, 짧은 문장 연습, 긴 글 연습이 가능합니다.\n"\
 "1. 단어 수정\n"\
 "2. 문장 수정\n"\
+"3. 단어 게임\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
@@ -36,6 +38,10 @@ const string script_sentence_modify = "문장 수정을 선택하셨습니다.\n
 "3. 문장 삭제\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
+
+const string script_word_game = "단어 게임을 선택하셨습니다.\n"\
+"단어 게임이 시작됩니다.\n"\
+"------------------------------------------------\n";
 
 int main() {
     Word w;
@@ -142,6 +148,25 @@ int main() {
             }
             break;
         }
+
+        // 단어게임
+        case 3:
+        {   
+            cout << script_word_game;
+            int count = 10; // 기본 10개
+            WordGame *wg = new WordGame(count);
+
+            for(int i=0; i<count; i++) {
+                string word = wg->getWord(i);
+                cout << word << endl;
+
+                string ans;
+                getline(cin, ans);
+            }
+
+            delete wg;
+        }
+
         default:
             return 0;
         }
