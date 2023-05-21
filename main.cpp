@@ -5,16 +5,9 @@
 #include "Sentence.h"
 #include "Wordgame.h"
 #include "Sentencegame.h"
-// #include "utils.h"
+#include "utils.h"
 using namespace std;
 
-const string short_sentence[5] = {
-    "안녕하세요. 심화프로그래밍 프로젝트입니다.",
-    "해당 문장은 체크를 위한 문장입니다.",
-    "속도, 정확도, 시간을 측정합니다.",
-    "프로젝트 성공하고 싶습니다.",
-    "제발 잘 됐으면 좋겠습니다."
-};
 
 const string script_main = "안녕하세요. 한글 타자연습기 프로그램입니다.\n"\
 "단어 연습, 짧은 문장 연습, 긴 글 연습이 가능합니다.\n"\
@@ -43,22 +36,19 @@ const string script_sentence_modify = "문장 수정을 선택하셨습니다.\n
 
 const string script_word_game = "단어 게임을 선택하셨습니다.\n"\
 "단어 게임이 시작됩니다.\n"\
-"------------------------------------------------\n";
+"------------------------------------------------";
 
 const string script_sentence_game = "문장 게임을 선택하셨습니다.\n"\
 "문장 게임이 시작됩니다.\n"\
-"------------------------------------------------\n";
+"------------------------------------------------";
 
 int main() {
-    Word w;
-    Sentence s;
     while(true) {
         int input;
         cout << script_main;
         cin >> input;
         cin.ignore();
         cout << endl;
-
         
         switch (input)
         {
@@ -66,6 +56,7 @@ int main() {
         // 단어 추가/삭제 모듈 선언 및 실행
         case 1:
         {
+            Word w;
             while(true) {
                 int flag = 1;
 
@@ -85,6 +76,7 @@ int main() {
                     cout << "추가할 단어를 입력해 주세요." << endl;
                     string word;
                     getline(cin, word);
+                    cin.ignore();
 
                     w.addWord(word);
                     break;
@@ -94,6 +86,7 @@ int main() {
                     cout << "삭제할 단어를 입력해 주세요." << endl;
                     string word;
                     getline(cin, word);
+                    cin.ignore();
 
                     w.deleteWord(word);
                     break;
@@ -112,6 +105,7 @@ int main() {
         // 문장 추가/삭제 모듈 선언 및 실행
         case 2:
         {
+            Sentence s;
             while(true) {
                 int flag = 1;
 
@@ -131,6 +125,7 @@ int main() {
                     cout << "추가할 문장을 입력해 주세요." << endl;
                     string sentence;
                     getline(cin, sentence);
+                    cin.ignore();
 
                     s.addSentence(sentence);
                     break;
@@ -140,6 +135,7 @@ int main() {
                     cout << "삭제할 문장을 입력해 주세요." << endl;
                     string sentence;
                     getline(cin, sentence);
+                    cin.ignore();
 
                     s.deleteSentence(sentence);
                     break;
@@ -158,19 +154,31 @@ int main() {
         // 단어게임
         case 3:
         {   
-            cout << script_word_game;
+            cout << script_word_game << endl;
             int count = 10; // 기본 10개
             WordGame *wg = new WordGame(count);
 
             for(int i=0; i<count; i++) {
                 string word = wg->getWord(i);
                 cout << word << endl;
-
+                
                 string ans;
                 getline(cin, ans);
+
+                // cout << word << ans << endl;
+                cout << ans;
+                
+                // int incorrect;
+                // double correct;
+                // incorrect = get<0>(checkCorrect(ans, word));
+                // correct = get<1>(checkCorrect(ans, word));
+
+                // cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
             }
 
             delete wg;
+
+            break;
         }
 
         // 문장게임
@@ -186,9 +194,18 @@ int main() {
 
                 string ans;
                 getline(cin, ans);
+
+                int incorrect;
+                double correct;
+                incorrect = get<0>(checkCorrect(ans, sentence));
+                correct = get<1>(checkCorrect(ans, sentence));
+
+                cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
             }
 
             delete sg;
+
+            break;
         }
 
         default:

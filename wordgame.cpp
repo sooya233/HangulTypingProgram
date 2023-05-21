@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <cctype>
 #include "Wordgame.h"
 using namespace std;
 
@@ -31,7 +32,7 @@ WordGame::WordGame(int count) {
 }
 
 WordGame::~WordGame() {
-    delete[] words;
+    delete words;
 }
 
 string WordGame::getWord(int index) {
