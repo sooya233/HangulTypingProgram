@@ -160,17 +160,18 @@ int main() {
                 cout << word << endl;
                 
                 string ans;
+                clock_t start, end;
+
+                start = clock();
                 getline(cin, ans);
-
-                cout << word << ans << endl;
-                // cout << ans;
+                end = clock();
                 
-                // int incorrect;
-                // double correct;
-                // incorrect = get<0>(checkCorrect(ans, word));
-                // correct = get<1>(checkCorrect(ans, word));
+                int incorrect;
+                double correct;
+                incorrect = get<0>(checkCorrect(ans, word));
+                correct = get<1>(checkCorrect(ans, word));
 
-                // cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
+                cout << "진행도 : [" << i+1 << "/" << count << "] 오타 수 : " << incorrect << " 정확도 : " << correct << "% 소요시간 : " << (end-start)/1000.0 << "(초)" << endl << endl; 
             }
 
             delete wg;
@@ -190,14 +191,18 @@ int main() {
                 cout << sentence << endl;
 
                 string ans;
+                clock_t start, end;
+
+                start = clock();
                 getline(cin, ans);
+                end = clock();
 
                 int incorrect;
                 double correct;
                 incorrect = get<0>(checkCorrect(ans, sentence));
                 correct = get<1>(checkCorrect(ans, sentence));
 
-                cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
+                cout << "진행도 : [" << i+1 << "/" << count << "] 오타 수 : " << incorrect << " 정확도 : " << correct << "% 소요시간 : " << (end-start)/1000.0 << "(초)" << endl << endl; 
             }
 
             delete sg;
