@@ -9,38 +9,38 @@
 using namespace std;
 
 
-const string script_main = "ì•ˆë…•í•˜ì„¸ìš”. í•œê¸€ íƒ€ìì—°ìŠµê¸° í”„ë¡œê·¸ë¨ì…ë‹ˆë‹¤.\n"\
-"ë‹¨ì–´ ì—°ìŠµ, ì§§ì€ ë¬¸ì¥ ì—°ìŠµ, ê¸´ ê¸€ ì—°ìŠµì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
-"1. ë‹¨ì–´ ìˆ˜ì •\n"\
-"2. ë¬¸ì¥ ìˆ˜ì •\n"\
-"3. ë‹¨ì–´ ê²Œì„\n"\
-"4. ë¬¸ì¥ ê²Œì„\n"\
+const string script_main = "¾È³çÇÏ¼¼¿ä. ÇÑ±Û Å¸ÀÚ¿¬½À±â ÇÁ·Î±×·¥ÀÔ´Ï´Ù.\n"\
+"´Ü¾î ¿¬½À, ÂªÀº ¹®Àå ¿¬½À, ±ä ±Û ¿¬½ÀÀÌ °¡´ÉÇÕ´Ï´Ù.\n"\
+"1. ´Ü¾î ¼öÁ¤\n"\
+"2. ¹®Àå ¼öÁ¤\n"\
+"3. ´Ü¾î °ÔÀÓ\n"\
+"4. ¹®Àå °ÔÀÓ\n"\
 "------------------------------------------------\n"\
-"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
+"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
 
-const string script_word_modify = "ë‹¨ì–´ ìˆ˜ì •ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
-"ë‹¨ì–´ ë³´ê¸°, ë‹¨ì–´ ì¶”ê°€, ë‹¨ì–´ ì‚­ì œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
-"1. ë‹¨ì–´ ë³´ê¸°\n"\
-"2. ë‹¨ì–´ ì¶”ê°€\n"\
-"3. ë‹¨ì–´ ì‚­ì œ\n"\
+const string script_word_modify = "´Ü¾î ¼öÁ¤À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
+"´Ü¾î º¸±â, ´Ü¾î Ãß°¡, ´Ü¾î »èÁ¦°¡ °¡´ÉÇÕ´Ï´Ù.\n"\
+"1. ´Ü¾î º¸±â\n"\
+"2. ´Ü¾î Ãß°¡\n"\
+"3. ´Ü¾î »èÁ¦\n"\
 "------------------------------------------------\n"\
-"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
+"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
 
-const string script_sentence_modify = "ë¬¸ì¥ ìˆ˜ì •ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
-"ë¬¸ì¥ ë³´ê¸°, ë¬¸ì¥ ì¶”ê°€, ë¬¸ì¥ ì‚­ì œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"\
-"1. ë¬¸ì¥ ë³´ê¸°\n"\
-"2. ë¬¸ì¥ ì¶”ê°€\n"\
-"3. ë¬¸ì¥ ì‚­ì œ\n"\
+const string script_sentence_modify = "¹®Àå ¼öÁ¤À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
+"¹®Àå º¸±â, ¹®Àå Ãß°¡, ¹®Àå »èÁ¦°¡ °¡´ÉÇÕ´Ï´Ù.\n"\
+"1. ¹®Àå º¸±â\n"\
+"2. ¹®Àå Ãß°¡\n"\
+"3. ¹®Àå »èÁ¦\n"\
 "------------------------------------------------\n"\
-"ì›í•˜ì‹œëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.";
+"¿øÇÏ½Ã´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.";
 
-const string script_word_game = "ë‹¨ì–´ ê²Œì„ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
-"ë‹¨ì–´ ê²Œì„ì´ ì‹œì‘ë©ë‹ˆë‹¤.\n"\
-"------------------------------------------------";
+const string script_word_game = "´Ü¾î °ÔÀÓÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
+"´Ü¾î °ÔÀÓÀÌ ½ÃÀÛµË´Ï´Ù.\n"\
+"------------------------------------------------\n";
 
-const string script_sentence_game = "ë¬¸ì¥ ê²Œì„ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n"\
-"ë¬¸ì¥ ê²Œì„ì´ ì‹œì‘ë©ë‹ˆë‹¤.\n"\
-"------------------------------------------------";
+const string script_sentence_game = "¹®Àå °ÔÀÓÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"\
+"¹®Àå °ÔÀÓÀÌ ½ÃÀÛµË´Ï´Ù.\n"\
+"------------------------------------------------\n";
 
 int main() {
     while(true) {
@@ -53,7 +53,7 @@ int main() {
         switch (input)
         {
 
-        // ë‹¨ì–´ ì¶”ê°€/ì‚­ì œ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
+        // ´Ü¾î Ãß°¡/»èÁ¦ ¸ğµâ ¼±¾ğ ¹× ½ÇÇà
         case 1:
         {
             Word w;
@@ -73,20 +73,18 @@ int main() {
                     break;
                 case 2:
                 {
-                    cout << "ì¶”ê°€í•  ë‹¨ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
+                    cout << "Ãß°¡ÇÒ ´Ü¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
                     string word;
                     getline(cin, word);
-                    cin.ignore();
 
                     w.addWord(word);
                     break;
                 }
                 case 3:
                 {
-                    cout << "ì‚­ì œí•  ë‹¨ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
+                    cout << "»èÁ¦ÇÒ ´Ü¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
                     string word;
                     getline(cin, word);
-                    cin.ignore();
 
                     w.deleteWord(word);
                     break;
@@ -102,7 +100,7 @@ int main() {
             break;
         }
         
-        // ë¬¸ì¥ ì¶”ê°€/ì‚­ì œ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
+        // ¹®Àå Ãß°¡/»èÁ¦ ¸ğµâ ¼±¾ğ ¹× ½ÇÇà
         case 2:
         {
             Sentence s;
@@ -122,20 +120,18 @@ int main() {
                     break;
                 case 2:
                 {
-                    cout << "ì¶”ê°€í•  ë¬¸ì¥ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
+                    cout << "Ãß°¡ÇÒ ¹®ÀåÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
                     string sentence;
                     getline(cin, sentence);
-                    cin.ignore();
 
                     s.addSentence(sentence);
                     break;
                 }
                 case 3:
                 {
-                    cout << "ì‚­ì œí•  ë¬¸ì¥ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”." << endl;
+                    cout << "»èÁ¦ÇÒ ¹®ÀåÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä." << endl;
                     string sentence;
                     getline(cin, sentence);
-                    cin.ignore();
 
                     s.deleteSentence(sentence);
                     break;
@@ -151,11 +147,12 @@ int main() {
             break;
         }
 
-        // ë‹¨ì–´ê²Œì„
+        // ´Ü¾î°ÔÀÓ
         case 3:
         {   
-            cout << script_word_game << endl;
-            int count = 10; // ê¸°ë³¸ 10ê°œ
+            cin.clear();
+            cout << script_word_game;
+            int count = 10; // ±âº» 10°³
             WordGame *wg = new WordGame(count);
 
             for(int i=0; i<count; i++) {
@@ -165,15 +162,15 @@ int main() {
                 string ans;
                 getline(cin, ans);
 
-                // cout << word << ans << endl;
-                cout << ans;
+                cout << word << ans << endl;
+                // cout << ans;
                 
                 // int incorrect;
                 // double correct;
                 // incorrect = get<0>(checkCorrect(ans, word));
                 // correct = get<1>(checkCorrect(ans, word));
 
-                // cout << "ì˜¤íƒ€ ìˆ˜ : " << incorrect << " ì •í™•ë„ : " << correct << endl << endl; 
+                // cout << "¿ÀÅ¸ ¼ö : " << incorrect << " Á¤È®µµ : " << correct << endl << endl; 
             }
 
             delete wg;
@@ -181,11 +178,11 @@ int main() {
             break;
         }
 
-        // ë¬¸ì¥ê²Œì„
+        // ¹®Àå°ÔÀÓ
         case 4:
         {   
             cout << script_sentence_game;
-            int count = 10; // ê¸°ë³¸ 10ê°œ
+            int count = 10; // ±âº» 10°³
             SentenceGame *sg = new SentenceGame(count);
 
             for(int i=0; i<count; i++) {
@@ -200,7 +197,7 @@ int main() {
                 incorrect = get<0>(checkCorrect(ans, sentence));
                 correct = get<1>(checkCorrect(ans, sentence));
 
-                cout << "ì˜¤íƒ€ ìˆ˜ : " << incorrect << " ì •í™•ë„ : " << correct << endl << endl; 
+                cout << "¿ÀÅ¸ ¼ö : " << incorrect << " Á¤È®µµ : " << correct << endl << endl; 
             }
 
             delete sg;
@@ -214,18 +211,18 @@ int main() {
     }
     
 
-    //TODO: ì›í•˜ëŠ” ì˜µì…˜ì„ í†µí•˜ì—¬ ë‹¨ì–´/ë¬¸ì¥/ê¸´ê¸€ ì—°ìŠµ ëª¨ë“ˆ ì„ ì–¸ ë° ì‹¤í–‰
+    //TODO: ¿øÇÏ´Â ¿É¼ÇÀ» ÅëÇÏ¿© ´Ü¾î/¹®Àå/±ä±Û ¿¬½À ¸ğµâ ¼±¾ğ ¹× ½ÇÇà
 
     // clock_t start, end;
     // for(int i=0; i<5; i++) {
-    //     cout << "ì§„í–‰ë„ [" << i << "/5]" << endl;
-    //     if(cin.fail()) { // ë²„í¼ ë¹„ìš°ê¸°
+    //     cout << "ÁøÇàµµ [" << i << "/5]" << endl;
+    //     if(cin.fail()) { // ¹öÆÛ ºñ¿ì±â
     //         cin.clear();
     //     }
 
     //     cout << short_sentence[i] << endl;
 
-    //     // ì‹œê°„ ì¸¡ì •
+    //     // ½Ã°£ ÃøÁ¤
     //     start = clock();
     //     string input;
     //     getline(cin, input);
@@ -233,8 +230,8 @@ int main() {
 
     //     double correct = checkCorrect(input, short_sentence[i]);
 
-    //     cout << "ì†Œìš”ì‹œê°„ : " << (double)(end-start)/(double)1000 << "(ì´ˆ)" << endl;
-    //     cout << "ì •í™•ë„ : " << correct << "%" << endl;
+    //     cout << "¼Ò¿ä½Ã°£ : " << (double)(end-start)/(double)1000 << "(ÃÊ)" << endl;
+    //     cout << "Á¤È®µµ : " << correct << "%" << endl;
     //     cout << endl;
     // }
 

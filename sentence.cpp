@@ -18,7 +18,7 @@ Sentence::Sentence() {
     sentence_file.close();
 }
 
-// vectorì•ˆì˜ ë¬¸ì¥ë“¤ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜.
+// vector¾ÈÀÇ ¹®ÀåµéÀ» Ãâ·ÂÇÏ´Â ÇÔ¼ö.
 void Sentence::show_sentences() {
     cout << "index \t" << "sentence" << endl;
     for(int i=0 ;i<sentences.size(); i++) {
@@ -27,37 +27,37 @@ void Sentence::show_sentences() {
     cout << endl;
 }
 
-// ë¬¸ì¥ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜.
+// ¹®ÀåÀ» Ãß°¡ÇÏ´Â ÇÔ¼ö.
 void Sentence::addSentence(string sentence) {
-    // ì¶”ê°€í•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì´ë¯¸ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸.
+    // Ãß°¡ÇÏ·Á´Â ¹®ÀåÀÌ ÀÌ¹Ì Á¸ÀçÇÏ´ÂÁö È®ÀÎ.
     auto it = find(sentences.begin(), sentences.end(), sentence);
 
-    if(it == sentences.end()) { // ì¶”ê°€í•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì—†ëŠ” ê²½ìš°.
+    if(it == sentences.end()) { // Ãß°¡ÇÏ·Á´Â ¹®ÀåÀÌ ¾ø´Â °æ¿ì.
         sentences.push_back(sentence);
-        cout << "ë¬¸ì¥ì´ ì„±ê³µì ìœ¼ë¡œ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤!\n\n";
+        cout << "¹®ÀåÀÌ ¼º°øÀûÀ¸·Î Ãß°¡µÇ¾ú½À´Ï´Ù!\n\n";
         saveSentence();
     } else {
-        cout << "ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ë¬¸ì¥ì…ë‹ˆë‹¤!\n\n";
+        cout << "ÀÌ¹Ì Á¸ÀçÇÏ´Â ¹®ÀåÀÔ´Ï´Ù!\n\n";
     }
 }
 
 
-// ë¬¸ì¥ì„ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜.
+// ¹®ÀåÀ» »èÁ¦ÇÏ´Â ÇÔ¼ö.
 void Sentence::deleteSentence(string sentence) {
-    // ì‚­ì œí•˜ë ¤ëŠ” ë¬¸ì¥ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸.
+    // »èÁ¦ÇÏ·Á´Â ¹®ÀåÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎ.
     auto it = find(sentences.begin(), sentences.end(), sentence);
 
     if(it == sentences.end()) {
-        cout << "í•´ë‹¹ ë¬¸ì¥ì€ íŒŒì¼ì— ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!\n\n";
+        cout << "ÇØ´ç ¹®ÀåÀº ÆÄÀÏ¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù!\n\n";
     } else {
-        int loc = it-sentences.begin(); // í•´ë‹¹ ë¬¸ì¥ì´ ìœ„ì¹˜í•˜ëŠ” ì¸ë±ìŠ¤ ì €ì¥.
+        int loc = it-sentences.begin(); // ÇØ´ç ¹®ÀåÀÌ À§Ä¡ÇÏ´Â ÀÎµ¦½º ÀúÀå.
         sentences.erase(sentences.begin() + loc);
-        cout << "ì„±ê³µì ìœ¼ë¡œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤!\n\n";
+        cout << "¼º°øÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù!\n\n";
         saveSentence();
     }
 }
 
-// ë¬¸ì¥ì„ ì €ì¥í•˜ëŠ” í•¨ìˆ˜.
+// ¹®ÀåÀ» ÀúÀåÇÏ´Â ÇÔ¼ö.
 void Sentence::saveSentence() {
     fstream sentence_file;
     sentence_file.open("./Default/sentence.txt", ios::out);

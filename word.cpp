@@ -18,7 +18,7 @@ Word::Word() {
     word_file.close();
 }
 
-// vector안의 단어들을 출력하는 함수.
+// vector���� �ܾ���� ����ϴ� �Լ�.
 void Word::show_words() {
     cout << "index \t" << "word" << endl;
     for(int i=0 ;i<words.size(); i++) {
@@ -27,37 +27,37 @@ void Word::show_words() {
     cout << endl;
 }
 
-// 단어를 추가하는 함수.
+// �ܾ �߰��ϴ� �Լ�.
 void Word::addWord(string word) {
-    // 추가하려는 단어가 이미 존재하는지 확인.
+    // �߰��Ϸ��� �ܾ �̹� �����ϴ��� Ȯ��.
     auto it = find(words.begin(), words.end(), word);
 
-    if(it == words.end()) { // 추가하려는 단어가 없는 경우.
+    if(it == words.end()) { // �߰��Ϸ��� �ܾ ���� ���.
         words.push_back(word);
-        cout << "단어가 성공적으로 추가되었습니다!\n\n";
+        cout << "�ܾ ���������� �߰��Ǿ����ϴ�!\n\n";
         saveWord();
     } else {
-        cout << "이미 존재하는 단어입니다!\n\n";
+        cout << "�̹� �����ϴ� �ܾ��Դϴ�!\n\n";
     }
 }
 
 
-// 단어를 삭제하는 함수.
+// �ܾ �����ϴ� �Լ�.
 void Word::deleteWord(string word) {
-    // 삭제하려는 단어가 존재하는지 확인.
+    // �����Ϸ��� �ܾ �����ϴ��� Ȯ��.
     auto it = find(words.begin(), words.end(), word);
 
     if(it == words.end()) {
-        cout << "해당 단어는 파일에 존재하지 않습니다!\n\n";
+        cout << "�ش� �ܾ�� ���Ͽ� �������� �ʽ��ϴ�!\n\n";
     } else {
-        int loc = it-words.begin(); // 해당 단어가 위치하는 인덱스 저장.
+        int loc = it-words.begin(); // �ش� �ܾ ��ġ�ϴ� �ε��� ����.
         words.erase(words.begin() + loc);
-        cout << "성공적으로 삭제되었습니다!\n\n";
+        cout << "���������� �����Ǿ����ϴ�!\n\n";
         saveWord();
     }
 }
 
-// 단어를 저장하는 함수.
+// �ܾ �����ϴ� �Լ�.
 void Word::saveWord() {
     fstream word_file;
     word_file.open("./Default/word.txt", ios::out);

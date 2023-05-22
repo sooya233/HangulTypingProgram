@@ -14,11 +14,11 @@ SentenceGame::SentenceGame(int count) {
     sentence_file.open("./Default/sentence.txt");
 
     
-    // word.txtë¡œë¶€í„° ë‹¨ì–´ë¥¼ ë¶ˆëŸ¬ì™€ file_wordsì— ì €ì¥.
+    // word.txt·ÎºÎÅÍ ´Ü¾î¸¦ ºÒ·¯¿Í file_words¿¡ ÀúÀå.
     string sentence;
     vector<string> file_sentences;
     while(getline(sentence_file, sentence)) {
-        sentence.pop_back(); // ê°œí–‰ë¬¸ì ì œê±°
+        sentence.pop_back(); // °³Çà¹®ÀÚ Á¦°Å
         file_sentences.push_back(sentence);
     }
     sentence_file.close();
