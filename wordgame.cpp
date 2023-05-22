@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <cctype>
 #include "Wordgame.h"
 using namespace std;
 
@@ -14,7 +15,7 @@ WordGame::WordGame(int count) {
     word_file.open("./Default/word.txt");
 
     
-    // word.txtë¡œë¶€í„° ë‹¨ì–´ë¥¼ ë¶ˆëŸ¬ì™€ file_wordsì— ì €ì¥.
+    // word.txt·ÎºÎÅÍ ´Ü¾î¸¦ ºÒ·¯¿Í file_words¿¡ ÀúÀå.
     string word;
     vector<string> file_words;
     while(getline(word_file, word)) {
@@ -31,7 +32,7 @@ WordGame::WordGame(int count) {
 }
 
 WordGame::~WordGame() {
-    delete[] words;
+    delete words;
 }
 
 string WordGame::getWord(int index) {
