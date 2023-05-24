@@ -6,15 +6,17 @@ using namespace std;
 
 tuple<int, double> checkCorrect(string input, string answer) {
     // 정확도 측정
-    // TODO: 현재 문자열 비교는 멀티바이트를 통하여 비교. 그러나, (안 녕하, 안녕 하)를 비교하면, 3바이트 차이로 정확도가 3개 잘못된 것으로 나옴.
-    // 이를 유니코드로 변환하여 비교하는 과정 필요.
     int correct = 0;
-    // cout << input << " " << answer << endl;
-    for (int i=0; i<input.length(); i++) {
-        if(i>answer.length()) {
+
+    // 두 입력을 유니코드로 변경
+    wstring unicode_input(input.begin(), input.end());
+    wstring unicode_answer(answer.begin(), answer.end());
+
+    for (int i=0; i<unicode_input.length(); i++) {
+        if(i>unicode_answer.length()) {
             break;
         }
-        if(input[i] == answer[i]){
+        if(unicode_input[i] == unicode_answer[i]){
             correct++;
         }
     }

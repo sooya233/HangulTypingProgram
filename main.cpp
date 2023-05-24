@@ -154,25 +154,35 @@ int main() {
             cout << script_word_game;
             int count = 10; // 기본 10개
             WordGame *wg = new WordGame(count);
+            int total_incorrect = 0;
+            int total_length = 0;
+            double total_time = 0;
 
             for(int i=0; i<count; i++) {
                 string word = wg->getWord(i);
                 cout << word << endl;
                 
                 string ans;
+                clock_t start, end;
+
+                start = clock();
                 getline(cin, ans);
-
-                cout << word << ans << endl;
-                // cout << ans;
+                end = clock();
                 
-                // int incorrect;
-                // double correct;
-                // incorrect = get<0>(checkCorrect(ans, word));
-                // correct = get<1>(checkCorrect(ans, word));
+                int incorrect;
+                double correct;
+                incorrect = get<0>(checkCorrect(ans, word));
+                correct = get<1>(checkCorrect(ans, word));
 
-                // cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
+                total_incorrect += incorrect;
+                total_length += word.length();
+                total_time += end-start;
+
+                cout << "진행도 : [" << i+1 << "/" << count << "] 오타 수 : " << incorrect << " 정확도 : " << correct << "% 소요시간 : " << (end-start)/1000.0 << "(초)" << endl << endl; 
             }
 
+            cout << "단어 게임이 완료되었습니다." << endl;
+            cout << "오타 수 : " << total_incorrect << " 정확도 : " << ((double)total_length - (double)total_incorrect) / (double)total_length * 100 << "% 소요시간 : " << total_time/1000.0 << "(초)" << endl << endl;
             delete wg;
 
             break;
@@ -184,22 +194,35 @@ int main() {
             cout << script_sentence_game;
             int count = 10; // 기본 10개
             SentenceGame *sg = new SentenceGame(count);
+            int total_incorrect = 0;
+            int total_length = 0;
+            double total_time = 0;
 
             for(int i=0; i<count; i++) {
                 string sentence = sg->getSentence(i);
                 cout << sentence << endl;
 
                 string ans;
+                clock_t start, end;
+
+                start = clock();
                 getline(cin, ans);
+                end = clock();
 
                 int incorrect;
                 double correct;
                 incorrect = get<0>(checkCorrect(ans, sentence));
                 correct = get<1>(checkCorrect(ans, sentence));
 
-                cout << "오타 수 : " << incorrect << " 정확도 : " << correct << endl << endl; 
+                total_incorrect += incorrect;
+                total_length += sentence.length();
+                total_time += end-start;
+
+                cout << "진행도 : [" << i+1 << "/" << count << "] 오타 수 : " << incorrect << " 정확도 : " << correct << "% 소요시간 : " << (end-start)/1000.0 << "(초)" << endl << endl; 
             }
 
+            cout << "문장 게임이 완료되었습니다." << endl;
+            cout << "오타 수 : " << total_incorrect << " 정확도 : " << ((double)total_length - (double)total_incorrect) / (double)total_length * 100 << "% 소요시간 : " << total_time/1000.0 << "(초)" << endl << endl;
             delete sg;
 
             break;
@@ -209,31 +232,6 @@ int main() {
             return 0;
         }
     }
-    
-
-    //TODO: 원하는 옵션을 통하여 단어/문장/긴글 연습 모듈 선언 및 실행
-
-    // clock_t start, end;
-    // for(int i=0; i<5; i++) {
-    //     cout << "진행도 [" << i << "/5]" << endl;
-    //     if(cin.fail()) { // 버퍼 비우기
-    //         cin.clear();
-    //     }
-
-    //     cout << short_sentence[i] << endl;
-
-    //     // 시간 측정
-    //     start = clock();
-    //     string input;
-    //     getline(cin, input);
-    //     end = clock();
-
-    //     double correct = checkCorrect(input, short_sentence[i]);
-
-    //     cout << "소요시간 : " << (double)(end-start)/(double)1000 << "(초)" << endl;
-    //     cout << "정확도 : " << correct << "%" << endl;
-    //     cout << endl;
-    // }
 
     return 0;
 }
