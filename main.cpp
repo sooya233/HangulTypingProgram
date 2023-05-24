@@ -232,31 +232,6 @@ int main() {
             return 0;
         }
     }
-    
-
-    //TODO: 원하는 옵션을 통하여 단어/문장/긴글 연습 모듈 선언 및 실행
-
-    // clock_t start, end;
-    // for(int i=0; i<5; i++) {
-    //     cout << "진행도 [" << i << "/5]" << endl;
-    //     if(cin.fail()) { // 버퍼 비우기
-    //         cin.clear();
-    //     }
-
-    //     cout << short_sentence[i] << endl;
-
-    //     // 시간 측정
-    //     start = clock();
-    //     string input;
-    //     getline(cin, input);
-    //     end = clock();
-
-    //     double correct = checkCorrect(input, short_sentence[i]);
-
-    //     cout << "소요시간 : " << (double)(end-start)/(double)1000 << "(초)" << endl;
-    //     cout << "정확도 : " << correct << "%" << endl;
-    //     cout << endl;
-    // }
 
     return 0;
 }
