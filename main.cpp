@@ -6,6 +6,7 @@
 #include "Wordgame.h"
 #include "Sentencegame.h"
 #include "utils.h"
+#include "PaperGame.h"
 using namespace std;
 
 
@@ -15,6 +16,7 @@ const string script_main = "안녕하세요. 한글 타자연습기 프로그램입니다.\n"\
 "2. 문장 수정\n"\
 "3. 단어 게임\n"\
 "4. 문장 게임\n"\
+"5. 긴 글 게임\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
@@ -225,6 +227,53 @@ int main() {
             cout << "오타 수 : " << total_incorrect << " 정확도 : " << ((double)total_length - (double)total_incorrect) / (double)total_length * 100 << "% 소요시간 : " << total_time/1000.0 << "(초)" << endl << endl;
             delete sg;
 
+            break;
+        }
+
+        // 긴 글 게임
+        case 5:
+        {
+            PaperGame pg;
+            int total_incorrect = 0;
+            int total_length = 0;
+            double total_time = 0;
+
+            pg.showPapers();
+            cout << "연습할 글을 선택하세요(index)" << endl;
+            int index;
+            cin >> index;
+            cin.ignore();
+
+            pg.selectPaper(index);
+            cout << "문장 게임이 시작됩니다.\n"\
+                "------------------------------------------------\n";
+
+            int line_count = pg.getLines();
+            for (int i = 0; i < line_count; i++) {
+                string sentence = pg.getSentence(i);
+                cout << sentence << endl;
+
+                string ans;
+                clock_t start, end;
+
+                start = clock();
+                getline(cin, ans);
+                end = clock();
+
+                int incorrect;
+                double correct;
+                incorrect = get<0>(checkCorrect(ans, sentence));
+                correct = get<1>(checkCorrect(ans, sentence));
+
+                total_incorrect += incorrect;
+                total_length += sentence.length();
+                total_time += end - start;
+
+                cout << "진행도 : [" << i + 1 << "/" << line_count << "] 오타 수 : " << incorrect << " 정확도 : " << correct << "% 소요시간 : " << (end - start) / 1000.0 << "(초)" << endl << endl;
+            }
+
+            cout << "문장 게임이 완료되었습니다." << endl;
+            cout << "오타 수 : " << total_incorrect << " 정확도 : " << ((double)total_length - (double)total_incorrect) / (double)total_length * 100 << "% 소요시간 : " << total_time / 1000.0 << "(초)" << endl << endl;
             break;
         }
 

@@ -32,7 +32,7 @@ WordGame::WordGame(int count) {
 }
 
 WordGame::~WordGame() {
-    delete words;
+    delete[] words;
 }
 
 string WordGame::getWord(int index) {
