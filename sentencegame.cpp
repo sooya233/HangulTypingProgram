@@ -18,7 +18,6 @@ SentenceGame::SentenceGame(int count) {
     string sentence;
     vector<string> file_sentences;
     while(getline(sentence_file, sentence)) {
-        sentence.pop_back(); // 개행문자 제거
         file_sentences.push_back(sentence);
     }
     sentence_file.close();
