@@ -5,8 +5,8 @@
 #include "Papergame.h"
 using namespace std;
 
-PaperGame::PaperGame() {
-	string paper_path = "./Default/Papers";
+PaperGame::PaperGame(string data_path) {
+	string paper_path = data_path + "/Papers";
 	for (auto &it : filesystem::directory_iterator(paper_path)) {
 		string temp_path = it.path().string();
 		paths.push_back(temp_path);

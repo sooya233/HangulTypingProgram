@@ -27,7 +27,7 @@ const string script_login_selectuser = "로그인 하려는 유저의 이름을 입력하세요.\
 
 const string script_main = "안녕하세요. 한글 타자연습기 프로그램입니다.\n"\
 "단어 연습, 짧은 문장 연습, 긴 글 연습이 가능합니다.\n"\
-"게스트의 경우, 단어 게임, 문장 게임, 긴 글 게임만 가능합니다."\
+"게스트의 경우, 단어 게임, 문장 게임, 긴 글 게임만 가능합니다.\n"\
 "1. 단어 수정\n"\
 "2. 문장 수정\n"\
 "3. 단어 게임\n"\
@@ -62,11 +62,14 @@ const string script_sentence_game = "문장 게임을 선택하셨습니다.\n"\
 
 int menu(string username="Default") {
     while (true) {
+        string data_path;
         if (username != "Default") {
             cout << username << "유저님 환영합니다!" << endl << endl;
+            data_path = "./Users/" + username;
         }
         else {
             cout << "게스트님 환영합니다!" << endl << endl;
+            data_path = "./" + username;
         }
 
         cout << script_main;
@@ -78,10 +81,15 @@ int menu(string username="Default") {
         switch (input)
         {
 
-            // 단어 추가/삭제 모듈 선언 및 실행
+         // 단어 추가/삭제 모듈 선언 및 실행
         case 1:
         {
-            Word w;
+            // 게스트 권한 제어
+            if (username == "Default") {
+                cout << "게스트는 해당 기능을 사용할 수 없습니다!" << endl << endl;
+                break;
+            }
+            Word w(data_path);
             while (true) {
                 int flag = 1;
 
@@ -128,7 +136,12 @@ int menu(string username="Default") {
         // 문장 추가/삭제 모듈 선언 및 실행
         case 2:
         {
-            Sentence s;
+            // 게스트 권한 제어
+            if (username == "Default") {
+                cout << "게스트는 해당 기능을 사용할 수 없습니다!" << endl << endl;
+                break;
+            }
+            Sentence s(data_path);
             while (true) {
                 int flag = 1;
 
@@ -178,7 +191,7 @@ int menu(string username="Default") {
             cin.clear();
             cout << script_word_game;
             int count = 10; // 기본 10개
-            WordGame* wg = new WordGame(count);
+            WordGame* wg = new WordGame(count, data_path);
             int total_incorrect = 0;
             int total_length = 0;
             double total_time = 0;
@@ -218,7 +231,7 @@ int menu(string username="Default") {
         {
             cout << script_sentence_game;
             int count = 10; // 기본 10개
-            SentenceGame* sg = new SentenceGame(count);
+            SentenceGame* sg = new SentenceGame(count, data_path);
             int total_incorrect = 0;
             int total_length = 0;
             double total_time = 0;
@@ -256,7 +269,7 @@ int menu(string username="Default") {
         // 긴 글 게임
         case 5:
         {
-            PaperGame pg;
+            PaperGame pg(data_path);
             int total_incorrect = 0;
             int total_length = 0;
             double total_time = 0;

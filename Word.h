@@ -7,8 +7,9 @@ using namespace std;
 class Word{
 private:
     vector<string> words;
+    string file_path;
 public:
-    Word();
+    Word(string data_path);
     void show_words();
     void addWord(string word);
     void deleteWord(string word);
