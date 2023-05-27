@@ -12,6 +12,7 @@ public:
     Word(string data_path);
     void show_words();
     void addWord(string word);
+    void modifyWord(int index, string word);
     void deleteWord(string word);
     void saveWord();
 };

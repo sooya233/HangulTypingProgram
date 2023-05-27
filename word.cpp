@@ -42,6 +42,20 @@ void Word::addWord(string word) {
     }
 }
 
+// 단어를 수정하는 함수.
+void Word::modifyWord(int index, string word) {
+    // 수정하려는 단어가 이미 존재하는지 확인.
+    auto it = find(words.begin(), words.end(), word);
+
+    if (it == words.end()) { // 수정하려는 단어가 없는 경우.
+        words[index-1] = word;
+        cout << "단어를 성공적으로 수정하였습니다!\n\n";
+        saveWord();
+    }
+    else {
+        cout << "이미 존재하는 단어입니다!\n\n";
+    }
+}
 
 // 단어를 삭제하는 함수.
 void Word::deleteWord(string word) {

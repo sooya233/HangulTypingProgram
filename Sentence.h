@@ -12,6 +12,7 @@ public:
     Sentence(string data_path);
     void show_sentences();
     void addSentence(string sentence);
+    void modifySentence(int index, string sentence);
     void deleteSentence(string sentence);
     void saveSentence();
 };

@@ -42,6 +42,21 @@ void Sentence::addSentence(string sentence) {
     }
 }
 
+// 문장을 수정하는 함수.
+void Sentence::modifySentence(int index, string sentence) {
+    // 수정하려는 단어가 이미 존재하는지 확인.
+    auto it = find(sentences.begin(), sentences.end(), sentence);
+
+    if (it == sentences.end()) { // 수정하려는 단어가 없는 경우.
+        sentences[index - 1] = sentence;
+        cout << "문장을 성공적으로 수정하였습니다!\n\n";
+        saveSentence();
+    }
+    else {
+        cout << "이미 존재하는 문장입니다!\n\n";
+    }
+}
+
 
 // 문장을 삭제하는 함수.
 void Sentence::deleteSentence(string sentence) {

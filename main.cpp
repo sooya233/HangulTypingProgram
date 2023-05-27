@@ -38,17 +38,21 @@ const string script_main = "안녕하세요. 한글 타자연습기 프로그램입니다.\n"\
 
 const string script_word_modify = "단어 수정을 선택하셨습니다.\n"\
 "단어 보기, 단어 추가, 단어 삭제가 가능합니다.\n"\
+"0. 이전 화면으로\n"\
 "1. 단어 보기\n"\
 "2. 단어 추가\n"\
-"3. 단어 삭제\n"\
+"3. 단어 수정\n"\
+"4. 단어 삭제\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
 const string script_sentence_modify = "문장 수정을 선택하셨습니다.\n"\
 "문장 보기, 문장 추가, 문장 삭제가 가능합니다.\n"\
+"0. 이전 화면으로\n"\
 "1. 문장 보기\n"\
 "2. 문장 추가\n"\
-"3. 문장 삭제\n"\
+"3. 문장 수정\n"\
+"4. 문장 삭제\n"\
 "------------------------------------------------\n"\
 "원하시는 옵션을 선택하세요.";
 
@@ -101,6 +105,9 @@ int menu(string username="Default") {
 
                 switch (input2)
                 {
+                case 0:
+                    flag = 0;
+                    break;
                 case 1:
                     w.show_words();
                     break;
@@ -115,6 +122,20 @@ int menu(string username="Default") {
                 }
                 case 3:
                 {
+                    int index;
+                    cout << "수정할 단어의 인덱스를 입력해 주세요.";
+                    cin >> index;
+                    cin.ignore();
+
+                    string word;
+                    cout << "수정할 단어를 입력해 주세요." << endl;
+                    getline(cin, word);
+
+                    w.modifyWord(index, word);
+                    break;
+                }
+                case 4:
+                {
                     cout << "삭제할 단어를 입력해 주세요." << endl;
                     string word;
                     getline(cin, word);
@@ -123,7 +144,6 @@ int menu(string username="Default") {
                     break;
                 }
                 default:
-                    flag = 0;
                     break;
                 }
                 if (flag == 0) {
@@ -153,6 +173,9 @@ int menu(string username="Default") {
 
                 switch (input2)
                 {
+                case 0:
+                    flag = 0;
+                    break;
                 case 1:
                     s.show_sentences();
                     break;
@@ -167,6 +190,20 @@ int menu(string username="Default") {
                 }
                 case 3:
                 {
+                    int index;
+                    cout << "수정할 문장의 인덱스를 입력해 주세요.";
+                    cin >> index;
+                    cin.ignore();
+
+                    string sentence;
+                    cout << "수정할 문장을 입력해 주세요." << endl;
+                    getline(cin, sentence);
+
+                    s.modifySentence(index, sentence);
+                    break;
+                }
+                case 4:
+                {
                     cout << "삭제할 문장을 입력해 주세요." << endl;
                     string sentence;
                     getline(cin, sentence);
@@ -175,7 +212,6 @@ int menu(string username="Default") {
                     break;
                 }
                 default:
-                    flag = 0;
                     break;
                 }
                 if (flag == 0) {
