@@ -6,9 +6,10 @@
 using namespace std;
 
 
-Word::Word() {
+Word::Word(string data_path) {
+    file_path = data_path + "/word.txt";
     fstream word_file;
-    word_file.open("./Default/word.txt");
+    word_file.open(file_path);
 
     string word;
     while(getline(word_file, word)) {
@@ -60,7 +61,7 @@ void Word::deleteWord(string word) {
 // 단어를 저장하는 함수.
 void Word::saveWord() {
     fstream word_file;
-    word_file.open("./Default/word.txt", ios::out);
+    word_file.open(file_path, ios::out);
 
     for(int i=0; i<words.size(); i++) {
         word_file << words[i] << "\n";

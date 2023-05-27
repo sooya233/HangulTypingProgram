@@ -6,9 +6,10 @@
 using namespace std;
 
 
-Sentence::Sentence() {
+Sentence::Sentence(string data_path) {
+    file_path = data_path + "/sentence.txt";
     fstream sentence_file;
-    sentence_file.open("./Default/sentence.txt");
+    sentence_file.open(file_path);
 
     string sentence;
     while(getline(sentence_file, sentence)) {
@@ -60,7 +61,7 @@ void Sentence::deleteSentence(string sentence) {
 // 문장을 저장하는 함수.
 void Sentence::saveSentence() {
     fstream sentence_file;
-    sentence_file.open("./Default/sentence.txt", ios::out);
+    sentence_file.open(file_path, ios::out);
 
     for(int i=0; i<sentences.size(); i++) {
         sentence_file << sentences[i] << "\n";
